@@ -4,5 +4,6 @@
     {
         public string GenerateToken(int id);
         public bool VerifyPassword(byte[] encrypterPass, byte[] password);
+        public int GetUidFromToken();
     }
 }

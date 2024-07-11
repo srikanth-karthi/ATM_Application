@@ -1,4 +1,5 @@
 ﻿using ATM_MiniProject.Context;
+using ATMMiniproject.Exceptions;
 using ATMMiniproject.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,10 @@ namespace ATMMiniproject.Repository
 
         public override async Task<Account> GetbyId(int key)
         {
-            try
-            {
+            
                 var res = await _context.Accounts.SingleOrDefaultAsync(item => item.AcctId == key);
-                return res;
-            }catch(Exception ex)
-            {
-                Console.WriteLine($"Database error: {ex.Message}");
-            }
-            return null;
+            if (res == null) throw new NoSuchIteminDbException("No Such Item in Db");
+            return res;
         }
     }
 }

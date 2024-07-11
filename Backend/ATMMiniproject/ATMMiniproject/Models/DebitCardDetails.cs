@@ -5,7 +5,6 @@ namespace ATM_MiniProject.Context
     public class DebitCardDetails
     {
         [Key]
-        [MaxLength(16)]
         public int CardId { get; set; }
         public int AcctId { get; set; }
         public byte[] PinHashed { get; set; }

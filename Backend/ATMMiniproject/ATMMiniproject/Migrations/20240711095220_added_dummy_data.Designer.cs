@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ATMMiniproject.Migrations
 {
     [DbContext(typeof(ATMContext))]
-    [Migration("20240711054740_initial")]
-    partial class initial
+    [Migration("20240711095220_added_dummy_data")]
+    partial class added_dummy_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,10 @@ namespace ATMMiniproject.Migrations
             modelBuilder.Entity("ATM_MiniProject.Context.Account", b =>
                 {
                     b.Property<int>("AcctId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AcctId"), 1L, 1);
 
                     b.Property<float>("Balance")
                         .HasColumnType("real");
@@ -35,13 +38,19 @@ namespace ATMMiniproject.Migrations
                     b.HasKey("AcctId");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            AcctId = 123456,
+                            Balance = 1000f
+                        });
                 });
 
             modelBuilder.Entity("ATM_MiniProject.Context.DebitCardDetails", b =>
                 {
                     b.Property<int>("CardId")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(16)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardId"), 1L, 1);
@@ -59,13 +68,28 @@ namespace ATMMiniproject.Migrations
 
                     b.HasKey("CardId");
 
+                    b.HasIndex("AcctId")
+                        .IsUnique();
+
                     b.ToTable("DebitCardDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            CardId = 1,
+                            AcctId = 123456,
+                            HashSalt = new byte[] { 74, 18, 131, 255, 225, 55, 111, 1, 54, 166, 50, 109, 241, 35, 245, 251, 45, 148, 198, 168, 22, 142, 97, 104, 185, 245, 2, 112, 172, 47, 54, 7, 108, 86, 247, 106, 213, 53, 201, 113, 211, 200, 76, 86, 19, 172, 231, 155, 200, 108, 135, 95, 149, 53, 181, 203, 25, 240, 65, 151, 209, 77, 8, 112, 16, 99, 148, 134, 234, 181, 173, 235, 91, 121, 157, 173, 196, 70, 157, 144, 174, 42, 240, 226, 125, 236, 174, 92, 91, 55, 29, 59, 75, 100, 64, 78, 68, 177, 194, 199, 35, 176, 126, 96, 195, 54, 123, 171, 189, 163, 187, 65, 45, 221, 20, 49, 153, 101, 171, 75, 191, 164, 69, 26, 182, 45, 19, 108 },
+                            PinHashed = new byte[] { 249, 240, 122, 163, 205, 192, 103, 46, 171, 80, 211, 248, 179, 101, 194, 155, 23, 4, 59, 3, 134, 47, 81, 158, 20, 86, 18, 104, 244, 193, 235, 33, 254, 108, 109, 20, 48, 138, 221, 161, 112, 117, 250, 153, 161, 222, 71, 25, 173, 124, 98, 27, 52, 183, 199, 44, 55, 198, 87, 35, 206, 212, 1, 6 }
+                        });
                 });
 
             modelBuilder.Entity("ATM_MiniProject.Models.ATMTransaction", b =>
                 {
                     b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"), 1L, 1);
 
                     b.Property<int>("AcctId")
                         .HasColumnType("int");
@@ -84,38 +108,37 @@ namespace ATMMiniproject.Migrations
 
                     b.HasKey("TransactionId");
 
+                    b.HasIndex("AcctId");
+
                     b.ToTable("ATMTransactions");
                 });
 
-            modelBuilder.Entity("ATM_MiniProject.Context.Account", b =>
+            modelBuilder.Entity("ATM_MiniProject.Context.DebitCardDetails", b =>
                 {
-                    b.HasOne("ATM_MiniProject.Context.DebitCardDetails", "DebitCardDetails")
-                        .WithOne("Account")
-                        .HasForeignKey("ATM_MiniProject.Context.Account", "AcctId")
+                    b.HasOne("ATM_MiniProject.Context.Account", "Account")
+                        .WithOne("DebitCardDetails")
+                        .HasForeignKey("ATM_MiniProject.Context.DebitCardDetails", "AcctId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DebitCardDetails");
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("ATM_MiniProject.Models.ATMTransaction", b =>
                 {
                     b.HasOne("ATM_MiniProject.Context.Account", null)
                         .WithMany("Transactions")
-                        .HasForeignKey("TransactionId")
+                        .HasForeignKey("AcctId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("ATM_MiniProject.Context.Account", b =>
                 {
-                    b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("ATM_MiniProject.Context.DebitCardDetails", b =>
-                {
-                    b.Navigation("Account")
+                    b.Navigation("DebitCardDetails")
                         .IsRequired();
+
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

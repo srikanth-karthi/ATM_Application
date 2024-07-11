@@ -12,11 +12,13 @@ namespace ATMMiniproject.Service
 
         private readonly string _secretKey;
         private readonly SymmetricSecurityKey _key;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TokenService(IConfiguration configuration)
+        public TokenService(IConfiguration configuration , IHttpContextAccessor httpContextAccessor)
         {
             _secretKey = configuration.GetSection("TokenKey").GetSection("JWT").Value.ToString();
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+            _httpContextAccessor = httpContextAccessor;
         }
         public string GenerateToken(int id)
         {
@@ -42,6 +44,19 @@ namespace ATMMiniproject.Service
                 }
             }
             return true;
+        }
+        public int GetUidFromToken()
+        {
+            var cardId = _httpContextAccessor.HttpContext?.User?.FindFirst("id")?.Value;
+            if(cardId == null)
+            {
+                throw new UnauthorizedAccessException("No Access To the Card");
+            }
+            if (int.TryParse(cardId, out int cid))
+            {
+                return cid;
+            }
+            return 0;
         }
     }
 }
