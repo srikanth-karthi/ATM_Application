@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/toaster.css" rel="stylesheet">
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
     <div class="bg-white p-6 rounded-lg shadow-lg ">
@@ -33,13 +34,24 @@
 </body>
 </html>
 <script src="js/global.js"></script>
+<script src="js/toaster.js"></script>
 
 <script>
-    window.addEventListener('beforeunload', function (e) {
-    // Modern browsers will ignore the return value, so just set e.returnValue.
-        e.returnValue = 'Are you sure you want to leave?';
-        return 'Are you sure you want to leave?';
-    });
+    // window.addEventListener('beforeunload', function (e) {
+    // // Check if the event is triggered by navigation (not form submission or link click)
+    //     if (!isNavigationEvent(e)) {
+    //         // Modern browsers will ignore the return value, so just set e.returnValue.
+    //         e.returnValue = 'Are you sure you want to leave?';
+    //         return 'Are you sure you want to leave?';
+    //     }
+    // });
+
+    function isNavigationEvent(event) {
+        // Check if the event is triggered by a button click
+        if (event.target.activeElement && event.target.activeElement.tagName === 'BUTTON') {
+            return true;
+        }
+    }
 
     function addPin(number){
         const input = document.getElementById('numberInput');
@@ -50,12 +62,16 @@
         input.value += number;
         }
     }
+
+
     function loginPin(){
         const input = document.getElementById('numberInput');
         if (input.value.length!=4) {
-            alert("Enter Valid Pin");
+            // alert("Enter Valid Pin");
+            showToast('error','Enter Valid pin!','4 Digits only');
         }
         else{
+
             window.location.href="options.html"
         }
     }
