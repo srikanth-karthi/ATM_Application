@@ -37,7 +37,7 @@ namespace ATMMiniproject.Controllers
             }
              [Authorize]
             [HttpPost("withdraw")]
-            public async Task<IActionResult> Withdraw(float amount)
+            public async Task<IActionResult> Withdraw(int amount)
             {
                 try
                 {
@@ -55,7 +55,7 @@ namespace ATMMiniproject.Controllers
             }
             [Authorize]
             [HttpPost("deposit")]
-            public async Task<IActionResult> Deposit(float amount)
+            public async Task<IActionResult> Deposit(int amount)
             {
                 try
                 {
@@ -72,5 +72,19 @@ namespace ATMMiniproject.Controllers
                      
                 }
             }
+        [Authorize]
+        [HttpPost("CheckBalance")]
+        public async Task<IActionResult> CheckBalanace()
+        {
+            try
+            {
+                var balance = await _accountService.GetAccountBalance();
+                return Ok(balance);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex });
+            }
         }
+    }
 }

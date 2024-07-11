@@ -44,7 +44,7 @@ namespace ATMMiniproject.Service
             throw new UnauthorizedAccessException("Please Check pin");
         }
      
-        public async Task<ATMTransaction> Withdraw(float amt)
+        public async Task<ATMTransaction> Withdraw(int amt)
         {
             if (amt >= 10000)
             {
@@ -66,7 +66,7 @@ namespace ATMMiniproject.Service
             });
 
         }
-        public async Task<ATMTransaction> Deposit(float depositeAmmount)
+        public async Task<ATMTransaction> Deposit(int depositeAmmount)
         {
             if(depositeAmmount >= 20000)
             {
@@ -87,6 +87,12 @@ namespace ATMMiniproject.Service
                 Date = DateTime.Now,
                 Balance = card.Account.Balance
             });
+        }
+        public async Task<int> GetAccountBalance()
+        {
+            var card = await _cardRepo.GetbyId(_tokenService.GetUidFromToken());
+            return card.Account.Balance;
+
         }
     }
 }

@@ -4,8 +4,9 @@ namespace ATMMiniproject.Service.Interfaces
 {
     public interface IAccountService
     {
-        Task<string> Login(int id, string pin); 
-       Task<ATMTransaction> Withdraw(float amount); 
-        Task<ATMTransaction> Deposit(float amount);
+            Task<string> Login(int id, string pin); 
+            Task<ATMTransaction> Withdraw(int amount);
+            Task<ATMTransaction> Deposit(int amount);
+            Task<int> GetAccountBalance();
     }
 }

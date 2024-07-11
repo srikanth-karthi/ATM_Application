@@ -10,9 +10,9 @@ namespace ATM_MiniProject.Models
         [Key]
         public int TransactionId { get; set; } 
         public int AcctId { get; set; }
-        public float Amount { get; set; }
+        public int Amount { get; set; }
         public TransactionType TransactionType { get; set; }
         public DateTime Date { get; set; }
-        public float Balance { get; set; }
+        public int Balance { get; set; }
     }
 }

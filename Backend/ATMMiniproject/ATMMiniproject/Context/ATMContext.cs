@@ -31,7 +31,7 @@ namespace ATM_MiniProject.Context
                 modelBuilder.Entity<DebitCardDetails>().HasData(
                     new DebitCardDetails()
                     {
-                        CardId = 1,
+                        CardId = 654321,
                         PinHashed = hmacsha512.ComputeHash(Encoding.UTF8.GetBytes("1234")),
                         HashSalt = hmacsha512.Key,
                         AcctId = 123456 

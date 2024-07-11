@@ -24,6 +24,16 @@ namespace ATMMiniproject
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddHttpContextAccessor();
+            #region Cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
+            });
+
+            #endregion
             #region Authenticaion
             builder.Services.AddSwaggerGen(option =>
             {
@@ -91,7 +101,7 @@ namespace ATMMiniproject
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+            app.UseCors("AllowAllOrigins");
             app.MapControllers();
 
             app.Run();
