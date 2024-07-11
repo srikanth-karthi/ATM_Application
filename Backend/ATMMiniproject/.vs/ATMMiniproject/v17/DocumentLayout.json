@@ -1,26 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\",
+  "WorkspaceRootPath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\documents\\presidio_training\\11-07-2024\\atmminiproject\\atmminiproject\\repository\\interfaces\\iatmtransactionsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\service\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\service\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\service\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\repository\\interfaces\\iatmtransactionsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\repository\\interfaces\\iatmtransactionsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\documents\\presidio_training\\11-07-2024\\atmminiproject\\atmminiproject\\repository\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\repository\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\repository\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\documents\\presidio_training\\11-07-2024\\atmminiproject\\atmminiproject\\repository\\interfaces\\idebitcarddetailsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\repository\\interfaces\\idebitcarddetailsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\repository\\interfaces\\idebitcarddetailsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\documents\\presidio_training\\11-07-2024\\atmminiproject\\atmminiproject\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\desktop\\atm_application\\backend\\atmminiproject\\atmminiproject\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|c:\\users\\vc\\documents\\presidio_training\\11-07-2024\\atmminiproject\\atmminiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FAADB9FF-EDF6-4716-A2D1-102E74373525}|ATMMiniproject\\ATMMiniproject.csproj|solutionrelative:atmminiproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,63 +67,119 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\AccountService.cs",
+              "RelativeDocumentMoniker": "ATMMiniproject\\Service\\AccountService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\AccountService.cs",
+              "RelativeToolTip": "ATMMiniproject\\Service\\AccountService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T06:40:07.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\appsettings.json",
+              "RelativeDocumentMoniker": "ATMMiniproject\\appsettings.json",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\appsettings.json",
+              "RelativeToolTip": "ATMMiniproject\\appsettings.json",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-11T06:39:08.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\Interfaces\\ITokenService.cs",
+              "RelativeDocumentMoniker": "ATMMiniproject\\Service\\Interfaces\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\Interfaces\\ITokenService.cs",
+              "RelativeToolTip": "ATMMiniproject\\Service\\Interfaces\\ITokenService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T06:34:51.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\TokenService.cs",
+              "RelativeDocumentMoniker": "ATMMiniproject\\Service\\TokenService.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Service\\TokenService.cs",
+              "RelativeToolTip": "ATMMiniproject\\Service\\TokenService.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAwAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T06:34:08.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "IATMTransactionsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
               "RelativeDocumentMoniker": "ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
-              "ToolTip": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
               "RelativeToolTip": "ATMMiniproject\\Repository\\Interfaces\\IATMTransactionsRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-11T06:21:26.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "IDebitCardDetailsRepository.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
               "RelativeDocumentMoniker": "ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
-              "ToolTip": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
               "RelativeToolTip": "ATMMiniproject\\Repository\\Interfaces\\IDebitCardDetailsRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T06:16:58.311Z"
+              "WhenOpened": "2024-07-11T06:16:58.311Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "AccountRepository.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\AccountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\AccountRepository.cs",
               "RelativeDocumentMoniker": "ATMMiniproject\\Repository\\AccountRepository.cs",
-              "ToolTip": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Repository\\AccountRepository.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Repository\\AccountRepository.cs",
               "RelativeToolTip": "ATMMiniproject\\Repository\\AccountRepository.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAYwBkAAAAYAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA1wBkAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T05:57:03.649Z"
+              "WhenOpened": "2024-07-11T05:57:03.649Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Models\\Account.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Models\\Account.cs",
               "RelativeDocumentMoniker": "ATMMiniproject\\Models\\Account.cs",
-              "ToolTip": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Models\\Account.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Models\\Account.cs",
               "RelativeToolTip": "ATMMiniproject\\Models\\Account.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA1wA0AAAAFAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwA0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T05:41:17.091Z"
+              "WhenOpened": "2024-07-11T05:41:17.091Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Program.cs",
               "RelativeDocumentMoniker": "ATMMiniproject\\Program.cs",
-              "ToolTip": "C:\\Users\\VC\\Documents\\Presidio_Training\\11-07-2024\\ATMMiniproject\\ATMMiniproject\\Program.cs",
+              "ToolTip": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\Program.cs",
               "RelativeToolTip": "ATMMiniproject\\Program.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAA5wBQAAAAWAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAQwB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-11T05:38:13.175Z"
+              "WhenOpened": "2024-07-11T05:38:13.175Z",
+              "EditorCaption": ""
             }
           ]
         }

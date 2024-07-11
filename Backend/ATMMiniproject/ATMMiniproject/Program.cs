@@ -1,4 +1,6 @@
 using ATM_MiniProject.Context;
+using ATMMiniproject.Repository;
+using ATMMiniproject.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ATMMiniproject
@@ -18,7 +20,14 @@ namespace ATMMiniproject
             #region Context
             builder.Services.AddDbContext<ATMContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DbString")));
+            builder.Services.AddScoped<ATMContext>();
             #endregion
+            #region Repositories
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IDebitCardDetailsRepository, DebitCardDetailsRepository>();
+            builder.Services.AddScoped<IATMTransactionsRepository , ATMTransactionsRepository>();
+            #endregion
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
