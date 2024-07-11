@@ -7,11 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="css/toaster.css" rel="stylesheet">
 </head>
+
 <body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
     <div class="bg-white p-6 rounded-lg shadow-lg ">
         <div class="flex flex-col items-center justify-center">
             <span>Enter Pin</span>
-            <input type="number" disabled class="m-4 border-2 border-black px-2 py-1" id="numberInput">
+            <input type="password" disabled class="m-4 border-2 border-black px-2 py-1" id="numberInput">
         </div>
         <div class="grid grid-cols-5 gap-4">
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addPin('1')">1</button>
@@ -35,22 +36,40 @@
 </html>
 <script src="js/global.js"></script>
 <script src="js/toaster.js"></script>
-
 <script>
-    // window.addEventListener('beforeunload', function (e) {
-    // // Check if the event is triggered by navigation (not form submission or link click)
-    //     if (!isNavigationEvent(e)) {
-    //         // Modern browsers will ignore the return value, so just set e.returnValue.
-    //         e.returnValue = 'Are you sure you want to leave?';
-    //         return 'Are you sure you want to leave?';
-    //     }
-    // });
+    showToast('success',"Card Inserted","Enter Pin")
+</script>
+<script>
+    window.addEventListener('load', function() {
+        // Check if the key is present in localStorage
+        if (!localStorage.getItem('CardId')) {
+            // Redirect to another page
+            window.location.href = 'index.html';
+        }
+    });
+
+    window.addEventListener('beforeunload',function(event){
+        if(!isNavigationEvent(event)){
+            if(confirm("Are you sure you want to proceed?")){
+                event.preventDefault();
+                removeToken();
+            }   
+            else{
+                event.preventDefault();
+            }    
+        }
+        
+    });
+
+ 
 
     function isNavigationEvent(event) {
         // Check if the event is triggered by a button click
+        alert("yesy");
         if (event.target.activeElement && event.target.activeElement.tagName === 'BUTTON') {
             return true;
         }
+        else false 
     }
 
     function addPin(number){
@@ -63,16 +82,57 @@
         }
     }
 
-
-    function loginPin(){
+    let attempts=0
+    async function loginPin(){
         const input = document.getElementById('numberInput');
         if (input.value.length!=4) {
             // alert("Enter Valid Pin");
             showToast('error','Enter Valid pin!','4 Digits only');
         }
         else{
+            //Fetch Login API
+            try{
+                const data={id:parseInt(localStorage.getItem('CardId')) ,pin:input.value}
+                console.log(data);
+                const options={
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+                const apiUrl="http://localhost:5110/api/Account/login?id="
+                            +parseInt(localStorage.getItem('CardId'))+"&pin="+input.value
 
-            window.location.href="options.html"
+                const response=await fetch(apiUrl,{
+                    method: 'POST',
+                });
+                if (response.status === 200){
+                    const data = await response.json();
+                    localStorage.setItem("Token",data.token)
+                    console.log('Success:', data.token);
+                    showToast('success',"Valid Pin","Redirecting to options")
+                    setTimeout(() => { window.location.href="options.html";}, 2500);
+                }
+                else {
+                    // Handle errors
+                //    alert('Error: ' + response.status);
+                    
+                    attempts=attempts+1;
+                    if(attempts==3){
+                        showToast('error',"Invalid Pin","Attempts Exceeded");
+                        setTimeout(() => { window.location.href="index.html"; localStorage.removeItem('CardId')}, 3000);
+                    }
+                    else{
+                        showToast("error","Invalid Pin","Try Again")
+                        input.value="";
+                    }
+                   console.log(await response.json())
+                }
+            }catch(error){
+                alert('Network error: ' + error.message);
+            }
+            // window.location.href="options.html"
         }
     }
 </script>

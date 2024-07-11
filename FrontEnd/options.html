@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Options</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/toaster.css" rel="stylesheet">
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
     <div class="bg-white p-6 rounded-lg shadow-lg ">
         <div class="flex flex-col items-center justify-center">
-            <span>1.Withdrawal 2. Deposit</span>
+            <span>1.Withdrawal 2. Deposit 3. Balance</span>
             <input type="number" disabled class="m-4 border-2 border-black px-2 py-1" id="numberInput">
         </div>
         <div class="grid grid-cols-5 gap-4">
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addOptions('1')" >1</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addOptions('2')" >2</button>
-            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('3')" disabled>3</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('3')">3</button>
             <button class="col-span-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full" onclick="cancel()">Cancel</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('4')" disabled>4</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('5')" disabled>5</button>
@@ -31,10 +32,55 @@
             <span class="bg-gray-200  rounded  col-span-2 " disabled></span>
     </div>
 </body>
+<!-- Balance Modal -->
+<div id="balance-modal" class="hidden flex items-center justify-center bg-gray-500 bg-opacity-70 h-dvh w-dvh fixed inset-0">
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
+        <div class="flex flex-col items-center justify-center gap-2">
+            <span id="balance-span">Your Balance: </span>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="okButton()">Ok</button>
+        </div>
+    </div>
+</div>
 </html>
 <script src="js/global.js"></script>
+<script src="js/toaster.js" ></script>
 
 <script>
+    window.addEventListener('load', function() {
+        // Check if the key is present in localStorage
+        if (!localStorage.getItem('Token')||!localStorage.getItem('CardId')) {
+            // Redirect to another page
+            removeTokens();
+        }
+    });
+    window.addEventListener('beforeunload', function (e) {
+    // Check if the event is triggered by navigation (not form submission or link click)
+        if (!isNavigationEvent(e)) {
+            // Modern browsers will ignore the return value, so just set e.returnValue.
+            e.returnValue = 'Are you sure you want to leave?';
+            return 'Are you sure you want to leave?';
+        }
+    });
+
+    window.addEventListener('unload', function () {
+        // Remove the localStorage key
+        // localStorage.removeItem('yourKeyName');
+        removeToken();
+    });
+
+    function isNavigationEvent(event) {
+        // Check if the event is triggered by a button click
+        if (event.target.activeElement && event.target.activeElement.tagName === 'BUTTON') {
+            return true;
+        }
+    }
+    function okButton(){
+        document.getElementById('balance-span').innerText=""
+        const balanceModal=document.getElementById('balance-modal');
+        balanceModal.classList.add('hidden');
+        const input = document.getElementById('numberInput');
+        input.value=""
+    }
     function addOptions(number){
         const input = document.getElementById('numberInput');
         if(input.value.length==0){
@@ -43,11 +89,44 @@
     }
     function optionsInput(){
         const input = document.getElementById('numberInput');
+    if(input.value===""){
+        showToast('error','Error','Select valid option')
+    }
     if (input.value==1) {
-        window.location.href="withdrawal.html";
+        showToast('success','Withdrawal','Redirecting to Withdrawal')
+        setTimeout(()=>{window.location.href="withdrawal.html"},2500)
     }
     if(input.value==2){
-        window.location.href="deposit.html";
+        showToast('success','Deposit','Redirecting to Deposit')
+        setTimeout(()=>{window.location.href="deposit.html";},2500)
+    }
+    if(input.value==3){
+        const apiUrl="http://localhost:5110/api/Account/CheckBalance"
+        const options={
+            method: 'POST',
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem('Token')
+            }
+        };
+        // console.log(apiUrl)
+        // console.log(options)
+        fetch(apiUrl,options)
+        .then(response=>{
+            if(!response.ok){
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text()
+        })
+        .then(data=>{
+            console.log(data);
+            document.getElementById('balance-span').innerText="Your Balance: "+data
+            const balanceModal=document.getElementById('balance-modal');
+            balanceModal.classList.remove('hidden');
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
     }
    
     }

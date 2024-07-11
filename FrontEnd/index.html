@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATM</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/toaster.css" rel="stylesheet">
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
     <div class="bg-white p-6 rounded-lg shadow-lg ">
@@ -24,7 +25,7 @@
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('7')">7</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('8')">8</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('9')">9</button>
-            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="enter()">Enter</button>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="cardDetailsInput()">Enter</button>
             <span class="bg-gray-200  rounded"></span>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('0')">0</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('00')">00</button>
@@ -33,3 +34,20 @@
 </body>
 </html>
 <script src="js/global.js"></script>
+<script src="js/toaster.js"></script>
+<script>
+    function cardDetailsInput(){
+        const input = document.getElementById('numberInput');
+    if (input.value.length !=6) {
+        // alert("Enter Valid Card Number")
+        showToast('error',"Invalid Card Number","Enter Valid Card Number")
+        errorMessage.classList.remove('hidden');
+    }
+    else{
+        // showToast('success',"Card Read","Redirecting to Login")
+        localStorage.setItem("CardId",parseInt(input.value))
+        window.location.href="login.html"
+        input.value = '';
+    }
+    }
+</script>

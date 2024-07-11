@@ -12,8 +12,7 @@ function addNumber(number) {
 }
 
 function cancel() {
-    const input = document.getElementById('numberInput');
-    input.value = '';
+    removeTokens();
 }
 function clearInput(){
     const input = document.getElementById('numberInput');
@@ -34,4 +33,17 @@ function enter() {
         input.value = '';
     }
     }
+
+
+function removeTokens(){
+    try{
+        localStorage.removeItem('CardId')
+        localStorage.removeItem('Token')
+    }
+    catch{
+        
+    }
+    window.location.href="index.html";
+    
+}
     

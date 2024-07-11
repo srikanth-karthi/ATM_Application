@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deposit</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/toaster.css" rel="stylesheet">  
+    <script src="js/toaster.js"></script>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
     <div class="bg-white p-6 rounded-lg shadow-lg ">
@@ -24,16 +26,59 @@
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="withdrawInput('7')">7</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="withdrawInput('8')">8</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="withdrawInput('9')">9</button>
-            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="enter()">Enter</button>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="depositAmount()">Enter</button>
             <span class="bg-gray-200  rounded"></span>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="withdrawInput('0')">0</button>
             <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="withdrawInput('00')">00</button>
             <span class="bg-gray-200  rounded  col-span-2 " disabled></span>
     </div>
 </body>
+<!-- Statement Modal -->
+<div id="statement-modal" class="hidden flex items-center justify-center bg-gray-500 bg-opacity-70 h-dvh w-dvh fixed inset-0">
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
+        <div  class="flex flex-col items-center justify-center gap-2">
+            
+            <div id="details" class="flex flex-col items-center justify-center gap-2">
+               
+            </div>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="okButton()">Ok</button>
+        </div>
+    </div>
+</div>
 </html>
 <script src="js/global.js"></script>
 <script>
+    window.addEventListener('load', function() {
+        // Check if the key is present in localStorage
+        if (!localStorage.getItem('Token')||!localStorage.getItem('CardId')) {
+            // Redirect to another page
+            removeTokens();
+        }
+    });
+    window.addEventListener('beforeunload', function (e) {
+    // Check if the event is triggered by navigation (not form submission or link click)
+        if (!isNavigationEvent(e)) {
+            // Modern browsers will ignore the return value, so just set e.returnValue.
+            e.returnValue = 'Are you sure you want to leave?';
+            return 'Are you sure you want to leave?';
+        }
+    });
+
+    window.addEventListener('unload', function () {
+        // Remove the localStorage key
+        // localStorage.removeItem('yourKeyName');
+        removeToken();
+    });
+
+    let attempts=0;
+    function okButton(){
+        const statementModal=document.getElementById('statement-modal');
+        const details=document.getElementById('details');
+        
+        statementModal.classList.add('hidden');
+        details.innerHTML="";
+        removeTokens()
+    }
     function withdrawInput(number) {
     const input = document.getElementById('numberInput');
     if(number=='00'&&input.value.length==0){
@@ -47,7 +92,74 @@
     }
     }
 
-    function withdrawAmount(){
+    async function depositAmount(){
+        const input = document.getElementById('numberInput');
+        if(input.value===""){
+            showToast('error','Error',"Enter a Amount")
+            return
+        }
+        const apiUrl="http://localhost:5110/api/Account/deposit?amount="+input.value;
+        const options={
+            method: 'POST',
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem('Token')
+            }
+        };
+
+        
+        const response=await fetch(apiUrl,options)
+        if(response.status===200){
+            const data=await response.json();
+            // console.log(data);
+            const statementModal=document.getElementById('statement-modal');
+            const details=document.getElementById('details');
+            
+            const title=document.createElement('span')
+            title.innerText="Withdraw Successfull";
+            title.className="font-bold";
+
+            const acctId=document.createElement('span');
+            acctId.innerText="Account ID: "+data.acctId;
+
+            const transactionId=document.createElement('span');
+            transactionId.innerText="Transaction ID: "+data.transactionId;
+
+            const amountSpan=document.createElement('span');
+            amountSpan.innerText="Amount: "+data.amount;
+
+            const dateSpan=document.createElement('span');
+            dateSpan.innerText="Date: "+data.date;
+
+            const balanceSpan=document.createElement('span');
+            balanceSpan.innerText="Balance: "+data.balance;
+
+            details.appendChild(title);
+            details.appendChild(acctId);
+            details.appendChild(transactionId);
+            details.appendChild(amountSpan);
+            // details.appendChild(dateSpan);
+            details.appendChild(balanceSpan);
+
+
+            statementModal.classList.remove('hidden');
+
+        }
+        else{
+            const err=await response.json();
+            console.log(err.message);
+            
+            attempts=attempts+1;
+            if(attempts===3){
+                showToast('error',"Error","Attempts Exceeded");
+                setTimeout(()=>{removeTokens();},2500)
+            }
+            else{
+                showToast('error',"Error",err.message);
+            }
+        }
+
+
         
     }
+    
 </script>
