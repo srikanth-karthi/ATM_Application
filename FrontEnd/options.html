@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100 gap-2">
+    <div class="bg-white p-6 rounded-lg shadow-lg ">
+        <div class="flex flex-col items-center justify-center">
+            <span>1.Withdrawal 2. Deposit</span>
+            <input type="number" disabled class="m-4 border-2 border-black px-2 py-1" id="numberInput">
+        </div>
+        <div class="grid grid-cols-5 gap-4">
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addOptions('1')" >1</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addOptions('2')" >2</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('3')" disabled>3</button>
+            <button class="col-span-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full" onclick="cancel()">Cancel</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('4')" disabled>4</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('5')" disabled>5</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('6')" disabled>6</button>
+            <button class="bg-yellow-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="clearInput()">Clear</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('7')" disabled>7</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('8')" disabled>8</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('9')" disabled>9</button>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full col-span-2" onclick="optionsInput()">Enter</button>
+            <span class="bg-gray-200  rounded"></span>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('0')" disabled>0</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded" onclick="addNumber('00')" disabled>00</button>
+            <span class="bg-gray-200  rounded  col-span-2 " disabled></span>
+    </div>
+</body>
+</html>
+<script src="js/global.js"></script>
+
+<script>
+    function addOptions(number){
+        const input = document.getElementById('numberInput');
+        if(input.value.length==0){
+            input.value += number;
+        }
+    }
+    function optionsInput(){
+        const input = document.getElementById('numberInput');
+    if (input.value==1) {
+        window.location.href="withdrawal.html";
+    }
+    if(input.value==2){
+        window.location.href="deposit.html";
+    }
+    else{
+        alert("Enter Valid Option!!");
+    }
+    }
+</script>
