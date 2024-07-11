@@ -9,7 +9,7 @@ namespace ATM_MiniProject.Context
         public int AcctId { get; set; }    
         public float Balance { get; set; }
          
-        public IEnumerable<ATMTransaction> Transactions { get; set; } 
+        public IEnumerable<ATMTransaction> Transactions { get; set; } = new List<ATMTransaction>();
         public DebitCardDetails DebitCardDetails { get; set; }
     }
 }
