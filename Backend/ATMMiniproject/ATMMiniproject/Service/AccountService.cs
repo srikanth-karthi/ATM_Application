@@ -46,13 +46,14 @@ namespace ATMMiniproject.Service
      
         public async Task<ATMTransaction> Withdraw(float amt)
         {
-            int cardId = _tokenService.GetUidFromToken();
-            var card = await _cardRepo.GetbyId(cardId);
-            if (card.Account.Balance < amt) throw new ExceedAmountException("You balance is low");
             if (amt >= 10000)
             {
                 throw new ExceedAmountException("You Cant Withdraw Amount Greater Than 1000");
             }
+            int cardId = _tokenService.GetUidFromToken();
+            var card = await _cardRepo.GetbyId(cardId);
+            if (card.Account.Balance < amt) throw new ExceedAmountException("You balance is low");
+            
             card.Account.Balance -= amt;
             await _accountRepository.Update(card.Account);
             return await _atmTransactionsRepository.Add(new ATMTransaction()
