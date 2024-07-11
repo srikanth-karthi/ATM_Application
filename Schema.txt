@@ -1,0 +1,21 @@
+Schema:
+	Account:
+		-acct_id
+		-Balance
+	DebitCardDetails:
+		-car_id
+		-acct_id
+		-Pin_Hashed
+		-Hash_salt
+	ATM_Transactions:
+		-transaction_id
+		-acct_id
+		-amount
+		-transaction_type-Deposit or Withdrawal
+		-Date
+		-Balance
+Endpoints:
+	-Login(Card_id,pin)-->
+	-Withdraw--->MiniStament(balance,acct_id)
+	-Deposit
+	
