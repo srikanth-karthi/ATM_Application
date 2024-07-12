@@ -30,10 +30,15 @@ namespace ATMMiniproject.Controllers
                 {
                     return Unauthorized(new { Message = ex.Message });
                 }
-                catch (Exception ex)
+            catch (NoSuchIteminDbException ex)
+            {
+                return StatusCode(404, new { Error = ex.Message });
+            }
+            catch (Exception ex)
                 {
-                    return StatusCode(500, new { Message = "An error occurred while processing your request." , Error = ex });
+                    return StatusCode(500, new { Message = "An error occurred while processing your request." , Error = ex.Message });
                 }
+         
             }
              [Authorize]
             [HttpPost("withdraw")]
@@ -50,7 +55,7 @@ namespace ATMMiniproject.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, new { Message = "An error occurred while processing your request." , Error = ex });
+                    return StatusCode(500, new { Message = "An error occurred while processing your request." , Error = ex.Message });
                 }
             }
             [Authorize]
@@ -68,7 +73,7 @@ namespace ATMMiniproject.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, new { Message ="An error occurred while processing your request.", Error = ex });
+                    return StatusCode(500, new { Message ="An error occurred while processing your request.", Error = ex.Message });
                      
                 }
             }
@@ -83,7 +88,7 @@ namespace ATMMiniproject.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex });
+                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex.Message });
             }
         }
         [Authorize]
@@ -97,7 +102,7 @@ namespace ATMMiniproject.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex });
+                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex.Message });
             }
         }
     }

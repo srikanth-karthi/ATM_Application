@@ -17,7 +17,7 @@ namespace ATMMiniproject.Repository
         public override async Task<DebitCardDetails> GetbyId(int key)
         {
 
-                var res = await _context.DebitCardDetails.Include(item => item.Account).SingleOrDefaultAsync(item => item.CardId == key);
+                var res = await _context.DebitCardDetails.Include(item => item.Account).FirstOrDefaultAsync(item => item.CardId == key);
                 if (res == null) throw new NoSuchIteminDbException("No Such Item in Db");
                 return res;
             
