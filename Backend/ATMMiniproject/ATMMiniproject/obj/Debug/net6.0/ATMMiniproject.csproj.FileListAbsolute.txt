@@ -208,3 +208,5 @@ C:\Presidio\ATM_prj\Backend\ATMMiniproject\ATMMiniproject\obj\Debug\net6.0\refin
 C:\Presidio\ATM_prj\Backend\ATMMiniproject\ATMMiniproject\obj\Debug\net6.0\ATMMiniproject.pdb
 C:\Presidio\ATM_prj\Backend\ATMMiniproject\ATMMiniproject\obj\Debug\net6.0\ATMMiniproject.genruntimeconfig.cache
 C:\Presidio\ATM_prj\Backend\ATMMiniproject\ATMMiniproject\obj\Debug\net6.0\ref\ATMMiniproject.dll
+C:\Users\VC\Desktop\ATMMiniproject\ATMMiniproject\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\VC\Desktop\ATMMiniproject\ATMMiniproject\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

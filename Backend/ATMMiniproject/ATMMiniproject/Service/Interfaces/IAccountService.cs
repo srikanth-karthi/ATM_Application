@@ -8,5 +8,6 @@ namespace ATMMiniproject.Service.Interfaces
             Task<ATMTransaction> Withdraw(int amount);
             Task<ATMTransaction> Deposit(int amount);
             Task<int> GetAccountBalance();
+        Task<IList<ATMTransaction>> GetAllTransaction();
     }
 }

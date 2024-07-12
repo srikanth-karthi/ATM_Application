@@ -86,5 +86,19 @@ namespace ATMMiniproject.Controllers
                 return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex });
             }
         }
+        [Authorize]
+        [HttpGet("gettransactionhistory")]
+        public async Task<IActionResult> GetAllTransactions()
+        {
+            try
+            {
+                var transactions = await _accountService.GetAllTransaction();
+                return Ok(transactions);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while processing your request.", Error = ex });
+            }
+        }
     }
 }

@@ -2838,11 +2838,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Presidio\\ATM_prj\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
+      "projectUniqueName": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
       "projectName": "ATMMiniproject",
-      "projectPath": "C:\\Presidio\\ATM_prj\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
+      "projectPath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
       "packagesPath": "C:\\Users\\VC\\.nuget\\packages\\",
-      "outputPath": "C:\\Presidio\\ATM_prj\\Backend\\ATMMiniproject\\ATMMiniproject\\obj\\",
+      "outputPath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

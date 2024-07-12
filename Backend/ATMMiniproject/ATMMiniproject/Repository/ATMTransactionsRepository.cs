@@ -22,5 +22,10 @@ namespace ATMMiniproject.Repository
             return res;
 
         }
+        public async Task<IList<ATMTransaction>> GetAllByAcctId(int AcctId)
+        {
+            var res = await _context.ATMTransactions.Where(i => i.AcctId == AcctId).ToListAsync();
+            return res;
+        }
     }
 }

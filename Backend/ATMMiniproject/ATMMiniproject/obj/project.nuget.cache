@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pyJ9/IKrv3CWyRqMyEXZlRwbBun15rz55MwpA/0sLBXZ8okxcXa+AExcmHW1S14FtuBKsEP08W8cYbmdsAcPXw==",
+  "dgSpecHash": "7IgbHx5sGMMyPMfqgbfFEk3A7kqAA9NAYnzr5LzPLVPhktTepslFgRFYamjsoRlcwfTf8NfBSD1Vs2ix8FZbgQ==",
   "success": true,
-  "projectFilePath": "C:\\Presidio\\ATM_prj\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
+  "projectFilePath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\VC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.30\\microsoft.aspnetcore.authentication.jwtbearer.6.0.30.nupkg.sha512",

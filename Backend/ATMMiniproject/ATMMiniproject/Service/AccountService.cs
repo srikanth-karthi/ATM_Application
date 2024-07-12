@@ -31,6 +31,7 @@ namespace ATMMiniproject.Service
         public async Task<string> Login(int id,string pin)
         {
            var card= await _cardRepo.GetbyId(id);
+            if (card == null) throw new NoSuchIteminDbException("Card Not Found");
 
           using(HMACSHA512 hmacsha512 = new HMACSHA512(card.HashSalt))
             {
@@ -88,6 +89,13 @@ namespace ATMMiniproject.Service
                 Balance = card.Account.Balance
             });
         }
+        public async Task<IList<ATMTransaction>> GetAllTransaction()
+        {
+            int cardId = _tokenService.GetUidFromToken();
+            var card =await _cardRepo.GetbyId(cardId);
+            var transactions = await _atmTransactionsRepository.GetAllByAcctId(card.Account.AcctId);
+            return transactions;
+        } 
         public async Task<int> GetAccountBalance()
         {
             var card = await _cardRepo.GetbyId(_tokenService.GetUidFromToken());
