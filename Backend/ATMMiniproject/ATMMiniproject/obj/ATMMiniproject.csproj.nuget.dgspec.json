@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj": {}
+    "C:\\Presidio\\ATM_V2\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj": {
+    "C:\\Presidio\\ATM_V2\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
+        "projectUniqueName": "C:\\Presidio\\ATM_V2\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
         "projectName": "ATMMiniproject",
-        "projectPath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
+        "projectPath": "C:\\Presidio\\ATM_V2\\Backend\\ATMMiniproject\\ATMMiniproject\\ATMMiniproject.csproj",
         "packagesPath": "C:\\Users\\VC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\VC\\Desktop\\ATM_Application\\Backend\\ATMMiniproject\\ATMMiniproject\\obj\\",
+        "outputPath": "C:\\Presidio\\ATM_V2\\Backend\\ATMMiniproject\\ATMMiniproject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

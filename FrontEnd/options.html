@@ -37,10 +37,52 @@
     <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6">
         <div class="flex flex-col items-center justify-center gap-2">
             <span id="balance-span">Your Balance: </span>
+            <div class="border-2 py-1 max-h-48 overflow-y-auto" >
+                <!-- <div class="">
+                    <span>transactionId</span>
+                    <span>amount</span>
+                    <span>date</span>
+                    <span>balance</span>
+                </div>
+                <div class="border-2 py-1 overflow-auto h-24" id="transaction-history">
+                    <div class="flex flex-row gap-2">
+                        <span>transactionId</span>
+                        <span>amount</span>
+                        <span>date</span>
+                        <span>balance</span>
+                    </div>
+                    <div class="">
+                        <span>transactionId</span>
+                        <span>amount</span>
+                        <span>date</span>
+                        <span>balance</span>
+                    </div>
+                </div> -->
+                <table class=" " id="transTable">
+                    <thead>
+                        <tr class="">
+                            <th>TransId</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-history" class="h-32 overflow-auto">
+                        <tr>
+                            <td>TransId</td>
+                            <td>Amount</td>
+                            <td>Date</td>
+                            <td>Balance</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
             <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="okButton()">Ok</button>
         </div>
     </div>
 </div>
+
 </html>
 <script src="js/global.js"></script>
 <script src="js/toaster.js" ></script>
@@ -53,20 +95,20 @@
             removeTokens();
         }
     });
-    window.addEventListener('beforeunload', function (e) {
-    // Check if the event is triggered by navigation (not form submission or link click)
-        if (!isNavigationEvent(e)) {
-            // Modern browsers will ignore the return value, so just set e.returnValue.
-            e.returnValue = 'Are you sure you want to leave?';
-            return 'Are you sure you want to leave?';
-        }
-    });
+    // window.addEventListener('beforeunload', function (e) {
+    // // Check if the event is triggered by navigation (not form submission or link click)
+    //     if (!isNavigationEvent(e)) {
+    //         // Modern browsers will ignore the return value, so just set e.returnValue.
+    //         e.returnValue = 'Are you sure you want to leave?';
+    //         return 'Are you sure you want to leave?';
+    //     }
+    // });
 
-    window.addEventListener('unload', function () {
-        // Remove the localStorage key
-        // localStorage.removeItem('yourKeyName');
-        removeToken();
-    });
+    // window.addEventListener('unload', function () {
+    //     // Remove the localStorage key
+    //     // localStorage.removeItem('yourKeyName');
+    //     removeToken();
+    // });
 
     function isNavigationEvent(event) {
         // Check if the event is triggered by a button click
@@ -120,12 +162,116 @@
         .then(data=>{
             console.log(data);
             document.getElementById('balance-span').innerText="Your Balance: "+data
-            const balanceModal=document.getElementById('balance-modal');
-            balanceModal.classList.remove('hidden');
+            // const balanceModal=document.getElementById('balance-modal');
+            // balanceModal.classList.remove('hidden');
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
+
+        //Transactions Fetch
+        console.log("Transactions: ")
+        const apiUrlTrans="http://localhost:5110/api/Account/gettransactionhistory";
+        const optionsTrans={
+            method: 'GET',
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem('Token')
+            }
+        };
+
+        fetch(apiUrlTrans,optionsTrans)
+        .then(response=>{
+            if(!response.ok){
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json()
+        })
+        .then(data=>{
+            console.log(data);
+            const transContent=document.getElementById('transaction-history');
+            // const transH=documen.createElement('tr');
+            
+            // const transIDH=document.createElement('th');
+            // transIDH.innerText="TransID";
+            
+            // const transAmountH=document.createElement('th');
+            // transAmountH.innerText="Amount"
+
+            // const transDateH=document.createElement('th');
+            // transDateH.innerText="Date";
+
+            // const transBalanceH=document.createElement('th');
+            // transBalanceH.innerText="Balance";
+
+            // transH.appendChild(transIDH);
+            // transH.appendChild(transAmountH)
+            // transH.appendChild(transDateH)
+            // transH.appendChild(transBalanceH)
+
+            // transContent.appendChild(transH);
+
+            transContent.innerHTML="";
+            data.forEach(element => {
+                // console.log(element)
+                const transDiv=document.createElement('tr');
+                
+
+                const transId=document.createElement('td');
+                transId.innerText=element.transactionId;
+                transId.className="text-center";
+
+                const transAmount=document.createElement('td');
+                transAmount.innerText=element.amount;
+                transAmount.className="text-center";
+
+                const date = new Date(element.date);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+                const day = String(date.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+
+                const transDate=document.createElement('td');
+                transDate.innerText=formattedDate;
+
+                const transBalance=document.createElement('td');
+                transBalance.innerText=element.balance;
+                transBalance.className="text-center";
+
+                transDiv.appendChild(transId);
+                transDiv.appendChild(transAmount);
+                transDiv.appendChild(transDate);
+                transDiv.appendChild(transBalance);
+
+                transContent.appendChild(transDiv);
+
+            });
+            const balanceModal=document.getElementById('balance-modal');
+            balanceModal.classList.remove('hidden');
+        })
+        .catch(error=>{
+            console.log("Error!",error);
+        });
+
+
+    }
+
+    if(input.value==4){
+        const apiUrl="'http://localhost:5110/api/Account/gettransactionhistory";
+        const options={
+            method: 'POST',
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem('Token')
+            }
+        };
+
+        fetch(apiUrl,options)
+        .then(response=>{
+            if(!response.ok){
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text()
+        })
+
 
     }
    
